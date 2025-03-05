@@ -31,9 +31,10 @@ public class RoomService {
         }
         Room newRoom = new Room();
         newRoom.setRoomId(room.getRoomId());
-        newRoom.setRoomNumber(room.getRoomNumber());
+        newRoom.setName(room.getName());
         newRoom.setCapacity(room.getCapacity());
         newRoom.setAvailable(room.isAvailable());
+        newRoom.setRoomType(room.getRoomType());
         return ResponseEntity.ok(roomRepository.save(newRoom));
     }
 

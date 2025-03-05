@@ -3,7 +3,7 @@ package com.university.timetable.TimeTable.Controller;
 import com.university.timetable.TimeTable.Entity.Room;
 import com.university.timetable.TimeTable.Entity.RoomType;
 import com.university.timetable.TimeTable.Services.RoomService;
-import org.apache.coyote.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +22,9 @@ public class RoomController {
     }
 
     @PostMapping("/addRoom")
-    public ResponseEntity<Room> addRoom(@RequestBody  Room room) {
-    return roomService.addRoom(room);
+    public ResponseEntity<Room> addRoom(@RequestBody  Room room){
+        System.out.println(room);
+        return roomService.addRoom(room);
     }
 
     @PostMapping("/room-type")

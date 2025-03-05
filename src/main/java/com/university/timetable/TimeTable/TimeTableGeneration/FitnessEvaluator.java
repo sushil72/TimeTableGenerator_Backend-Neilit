@@ -38,7 +38,7 @@ public class FitnessEvaluator {
 
         // **Check Room Capacity** (Ensure students fit in the room)
         if (timetable.getRoom() != null && timetable.getProgramSemester() != null) {
-            int roomCapacity = Integer.parseInt(timetable.getRoom().getCapacity());
+            int roomCapacity = timetable.getRoom().getCapacity();
             int totalStudents = timetable.getProgramSemester().getTotalStudents();
             if (totalStudents > roomCapacity) {
                 score -= 10; // Penalize for overcrowding

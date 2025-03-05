@@ -13,6 +13,7 @@ import java.util.List;
 public class DayController {
     @Autowired
     DayService dayService;
+
     @GetMapping("/getAllDays")
     public ResponseEntity<List<Days>> getAllDays() {
         return dayService.getAllDays();
