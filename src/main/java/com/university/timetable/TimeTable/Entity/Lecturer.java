@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public class Lecturer {
     private String name;
     private String email;
     private String department;
-    private List<String> subjects; // Subjects the lecturer can teach
-    private boolean isAvailable; // To check if the lecturer is available for scheduling
+    private boolean isAvailable;
+    private List<String> subjectsTaught;
+    // ✅ Store subject IDs
+
 }

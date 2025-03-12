@@ -26,10 +26,18 @@ public class RoomController {
         System.out.println(room);
         return roomService.addRoom(room);
     }
+    @PostMapping("/add-rooms")
+    public ResponseEntity<List<Room>> addRooms(@RequestBody List<Room> rooms){
+        return roomService.addmore(rooms);
+    }
 
     @PostMapping("/room-type")
     public ResponseEntity<RoomType> addRoomType(@RequestBody RoomType roomType) {
         return roomService.addRoomType(roomType);
+    }
+    @PostMapping("/room-types")
+    public ResponseEntity<List<RoomType>> getRoomTypes(@RequestBody List<RoomType> roomTypes) {
+        return roomService.addmoreRoomType(roomTypes);
     }
 
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/time-table")
 public class TimeTableController {
@@ -19,8 +21,8 @@ public class TimeTableController {
     }
 
     @GetMapping("/generate")
-    public ResponseEntity<TimeTable> generateOptimalTimetable() {
-        TimeTable bestTimetable = timeTableService.runGeneticAlgorithm();
-        return ResponseEntity.ok(bestTimetable);
+    public ResponseEntity<List<TimeTable>> generateOptimalTimetable() {
+        List<TimeTable> bestTimetables = timeTableService.runGeneticAlgorithm();
+        return ResponseEntity.ok(bestTimetables);
     }
 }

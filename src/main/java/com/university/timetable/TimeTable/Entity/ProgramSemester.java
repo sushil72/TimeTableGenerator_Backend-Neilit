@@ -10,10 +10,10 @@ public class ProgramSemester {
     @Id
     private String programSemesterId;
 
-    private String title; // Fixed naming convention
+    private String title;
 
     @DBRef
-    private Program program; // Reference to a specific program (e.g., MCA, B.Tech)
+    private Program program;
 
     @DBRef
     private Semester semester;

@@ -3,6 +3,7 @@ package com.university.timetable.TimeTable.Services;
 import com.university.timetable.TimeTable.Entity.Semester;
 import com.university.timetable.TimeTable.Repository.SemesterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,9 @@ public class SemesterService {
         newSemester.setActive(semester.isActive());
 
         return ResponseEntity.ok(semesterRepository.save(newSemester));
+    }
+
+    public ResponseEntity<List<Semester>> addMore(List<Semester> semesters) {
+        return new ResponseEntity<>(semesterRepository.saveAll(semesters), HttpStatus.OK);
     }
 }

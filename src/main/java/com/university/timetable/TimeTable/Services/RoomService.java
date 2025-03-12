@@ -48,4 +48,12 @@ public class RoomService {
         newRoomType.setName(roomType.getName());
               return new ResponseEntity<>(roomTypeRepository.save(newRoomType), HttpStatus.CREATED);
     }
+
+    public ResponseEntity<List<Room>> addmore(List<Room> rooms) {
+return new ResponseEntity<>(roomRepository.saveAll(rooms),HttpStatus.OK);
+    }
+
+    public ResponseEntity<List<RoomType>> addmoreRoomType(List<RoomType> roomTypes) {
+        return new ResponseEntity<>(roomTypeRepository.saveAll(roomTypes),HttpStatus.OK);
+    }
 }

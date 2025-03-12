@@ -15,10 +15,9 @@ import java.util.Optional;
 public class LecturerSubjectController {
     private final LecturerSubjectService lecturerSubjectService;
 
-    // Add a new LecturerSubject mapping
     @PostMapping("/add")
     public ResponseEntity<LecturerSubject> addLecturerSubject(@RequestBody LecturerSubject lecturerSubject) {
-        return ResponseEntity.ok(lecturerSubjectService.addLecturerSubject(lecturerSubject));
+        return lecturerSubjectService.addLecturerSubject(lecturerSubject);
     }
 
     // Retrieve all LecturerSubject mappings
@@ -44,5 +43,10 @@ public class LecturerSubjectController {
     public ResponseEntity<String> deleteLecturerSubject(@PathVariable String id) {
         lecturerSubjectService.deleteLecturerSubject(id);
         return ResponseEntity.ok("LecturerSubject with ID " + id + " deleted successfully.");
+    }
+    @PostMapping("/assign")
+    public ResponseEntity<List<LecturerSubject>> assignLecturers() {
+        List<LecturerSubject> assignedLecturers = lecturerSubjectService.assignLecturersToSubjects();
+        return ResponseEntity.ok(assignedLecturers);
     }
 }

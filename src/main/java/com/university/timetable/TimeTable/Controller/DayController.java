@@ -14,13 +14,18 @@ public class DayController {
     @Autowired
     DayService dayService;
 
-    @GetMapping("/getAllDays")
+    @GetMapping("/get-days")
     public ResponseEntity<List<Days>> getAllDays() {
         return dayService.getAllDays();
     }
 
-    @PostMapping("/addDays")
+    @PostMapping("/add-day")
     public ResponseEntity<Days> addDays(@RequestBody Days days) {
         return  dayService.addDay(days);
+    }
+
+    @PostMapping("/add-days")
+    public ResponseEntity<List<Days>> addMultipleDays(@RequestBody List<Days> daysList) {
+        return ResponseEntity.ok(dayService.addDaysList(daysList));
     }
 }

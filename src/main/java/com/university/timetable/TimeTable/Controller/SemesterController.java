@@ -24,4 +24,8 @@ public class SemesterController {
     private ResponseEntity<Semester> addSemester(@RequestBody Semester semester) {
         return semesterService.addSemester(semester);
     }
+    @PostMapping("/add-semesters")
+    public ResponseEntity<List<Semester>> addSemesters(@RequestBody List<Semester> semesters) {
+        return semesterService.addMore(semesters);
+    }
 }

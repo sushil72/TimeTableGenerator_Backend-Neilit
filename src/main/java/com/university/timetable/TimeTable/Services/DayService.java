@@ -28,4 +28,8 @@ public class DayService {
         newDay.setActive(day.isActive());
         return ResponseEntity.ok(dayRepository.save(newDay));
     }
+
+    public List<Days> addDaysList(List<Days> daysList) {
+      return   dayRepository.saveAll(daysList);
+    }
 }

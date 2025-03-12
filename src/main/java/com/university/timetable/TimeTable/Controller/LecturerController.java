@@ -19,7 +19,7 @@ public class LecturerController {
     // Add a new lecturer
     @PostMapping("/add")
     public ResponseEntity<Lecturer> addLecturer(@RequestBody Lecturer lecturer) {
-        return ResponseEntity.ok(lecturerService.addLecturer(lecturer));
+        return lecturerService.addLecturer(lecturer);
     }
 
     // Retrieve all lecturers
@@ -45,5 +45,9 @@ public class LecturerController {
     public ResponseEntity<String> deleteLecturer(@PathVariable String id) {
         lecturerService.deleteLecturer(id);
         return ResponseEntity.ok("Lecturer with ID " + id + " deleted successfully.");
+    }
+    @PostMapping("/add-lectures")
+    public ResponseEntity<List<Lecturer>> addLecturers(@RequestBody List<Lecturer> lecturers) {
+        return lecturerService.addMultiple(lecturers);
     }
 }

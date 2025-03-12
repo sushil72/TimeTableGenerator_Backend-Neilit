@@ -4,6 +4,7 @@ import com.university.timetable.TimeTable.Entity.Subject;
 import com.university.timetable.TimeTable.Repository.SubjectRepository;
 import com.university.timetable.TimeTable.Repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -26,10 +27,14 @@ public class SubjectService {
         }
         Subject newSubject = new Subject();
         newSubject.setId(Subject.getId());
-        newSubject.setName(Subject.getName());
+        newSubject.setSubjectName(Subject.getSubjectName());
         newSubject.setCrsHrs(Subject.getCrsHrs());
-        newSubject.setRoomType(Subject.getRoomType());
+        newSubject.setCode(Subject.getCode());
         newSubject.setActive(Subject.isActive());
         return ResponseEntity.ok(SubjectRepository.save(newSubject));
+    }
+
+    public ResponseEntity<List<Subject>> addMultiple(List<Subject> subjects) {
+        return new ResponseEntity<>(SubjectRepository.saveAll(subjects), HttpStatus.OK);
     }
 }

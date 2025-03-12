@@ -20,12 +20,12 @@ public class DayTimeSlotService {
     }
 
     public ResponseEntity<DayTimeSlot> addDatSlotTime(DayTimeSlot dayTimeSlot) {
-        Optional<DayTimeSlot> db =dayTimeSlotRepository.findById(dayTimeSlot.getDayId());
+        Optional<DayTimeSlot> db =dayTimeSlotRepository.findById(dayTimeSlot.getDaySlotId());
         if (db.isPresent()) {
             throw new RuntimeException("Day time slot already exists");
         }
         DayTimeSlot newSlot = new DayTimeSlot();
-        newSlot.setDayId(dayTimeSlot.getDayId());
+        newSlot.setDaySlotId(dayTimeSlot.getDaySlotId());
         newSlot.setStartTime(dayTimeSlot.getStartTime());
         newSlot.setEndTime(dayTimeSlot.getEndTime());
         newSlot.setSlotTitle(dayTimeSlot.getSlotTitle());
@@ -33,5 +33,13 @@ public class DayTimeSlotService {
         newSlot.setActive(dayTimeSlot.isActive());
         DayTimeSlot saved = dayTimeSlotRepository.save(newSlot);
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
+    }
+    public List<DayTimeSlot> addAllTimeSlots(List<DayTimeSlot> slots) {
+        return dayTimeSlotRepository.saveAll(slots);
+    }
+
+    //get all DayTimeSlots
+    public List<DayTimeSlot> getAllDayTimeSlots() {
+        return dayTimeSlotRepository.findAll();
     }
 }

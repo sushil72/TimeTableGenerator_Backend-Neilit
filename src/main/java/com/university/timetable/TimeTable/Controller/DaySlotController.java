@@ -23,5 +23,9 @@ public class DaySlotController{
             return this.dayTimeSlotService.addDatSlotTime(dayTimeSlot);
     }
 
+    @PostMapping("/add-all-slots")
+    public ResponseEntity<List<DayTimeSlot>> addMultipleDayTimeSlots(@RequestBody List<DayTimeSlot> dayTimeSlots) {
+        return ResponseEntity.ok(dayTimeSlotService.addAllTimeSlots(dayTimeSlots));
+    }
 
 }

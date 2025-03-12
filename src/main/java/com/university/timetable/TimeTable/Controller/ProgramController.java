@@ -17,13 +17,11 @@ public class ProgramController {
     @Autowired
     private ProgramService programService;
 
-
-
-
     @PostMapping("/add")
     public ResponseEntity<Program> addProgram(@RequestBody Program program) {
         return ResponseEntity.ok(programService.addProgram(program));
     }
+
     @PostMapping("/semester")
     public ResponseEntity<ProgramSemester> addSemester(@RequestBody ProgramSemester semester) {
         return programService.addSemester(semester);

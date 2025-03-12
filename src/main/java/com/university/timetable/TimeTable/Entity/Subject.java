@@ -9,13 +9,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "courses")
+@Document(collection = "subject")
 public class Subject {
     @Id
     private String id;
-    private String name;
+    private String subjectName;
+    private String code;
     private boolean isActive;
     private int crsHrs;
-    @DBRef
-    private RoomType roomType;
 }
